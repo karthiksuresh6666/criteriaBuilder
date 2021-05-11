@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import com.criteria.builder.dto.Employee;
 import com.criteria.builder.dto.RestResponse;
 import com.criteria.builder.repository.EmployeeRepository;
-import com.siemens.rtls.entities.NotificationEntity;
 
 /**
  * @author Karthik Suresh
