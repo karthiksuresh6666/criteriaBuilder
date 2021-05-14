@@ -1,42 +1,34 @@
 package com.criteria.builder.dto;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * @author Karthik Suresh
  *
  */
-public class Employee {
-	
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Employee implements Serializable {
+
+	private static final long serialVersionUID = -4751383461950138748L;
+
 	private int id;
 
-	private String name;
+	private String firstName;
+
+	private String lastName;
 
 	private int deptId;
 
 	private int salary;
 
 	private short age;
-	
+
 	private LocalDateTime startDate;
-	
+
 	private LocalDateTime endDate;
-
-	public LocalDateTime getStartDate() {
-		return startDate;
-	}
-
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
-	}
-
-	public LocalDateTime getEndDate() {
-		return endDate;
-	}
-
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
-	}
 
 	public int getId() {
 		return id;
@@ -46,12 +38,20 @@ public class Employee {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getDeptId() {
@@ -78,7 +78,20 @@ public class Employee {
 		this.age = age;
 	}
 
+	public LocalDateTime getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDateTime startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDateTime getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDateTime endDate) {
+		this.endDate = endDate;
+	}
+
 }
-
-
-

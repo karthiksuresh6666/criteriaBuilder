@@ -32,14 +32,14 @@ public class EmployeeController {
 	@PostMapping("create")
 	public ResponseEntity<RestResponse> createEmployee(@Valid @RequestBody final Employee employee) {
 		LOGGER.trace(">>createEmployee()");
-		RestResponse restResponse = this.employeeService.createEmployee(employee);
+		var restResponse = this.employeeService.createEmployee(employee);
 		return new ResponseEntity<>(restResponse, HttpStatus.OK);
 	}
 
 	@PostMapping("find")
 	public ResponseEntity<RestResponse> findEmployee(@Valid @RequestBody final Employee employee) {
 		LOGGER.trace(">>updateOrder()");
-		RestResponse restResponse = this.employeeService.findEmployee(employee);
+		var restResponse = this.employeeService.findEmployee(employee);
 		return new ResponseEntity<>(restResponse, HttpStatus.OK);
 	}
 

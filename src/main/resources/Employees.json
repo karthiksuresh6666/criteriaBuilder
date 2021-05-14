@@ -1,0 +1,42 @@
+{
+    "firstName": "Karthik",
+    "lastName": "Suresh",
+    "deptId": 1,
+    "salary": 10000,
+    "age": 29,
+    "startDate": "2016-05-16T16:07:16.126218700",
+    "endDate": "2021-05-14T16:07:16.126218700"
+}
+{
+    "firstName": "Uttam",
+    "lastName": "Kumar",
+    "deptId": 1,
+    "salary": 20000,
+    "age": 29,
+    "startDate": "2013-12-16T16:07:16.126218700",
+    "endDate": "2021-05-09T16:07:16.126218700"
+}
+{
+    "firstName": "Madhusudhan",
+    "lastName": "AB",
+    "deptId": 2,
+    "salary": 30000,
+    "age": 29,
+    "startDate": "2014-03-01T16:07:16.126218700"
+}
+{
+    "firstName": "Prasada",
+    "lastName": "Shetty",
+    "deptId": 3,
+    "salary": 40000,
+    "age": 29,
+    "startDate": "2013-12-24T16:07:16.126218700"
+}
+{
+    "firstName": "Prasad",
+    "lastName": "Upadhyaya",
+    "deptId": 4,
+    "salary": 20000,
+    "age": 29,
+    "startDate": "2018-05-01T16:07:16.126218700"
+}

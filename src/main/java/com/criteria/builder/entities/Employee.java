@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Index;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import lombok.NoArgsConstructor;
 
@@ -18,8 +19,9 @@ import lombok.NoArgsConstructor;
  */
 @Entity
 @NoArgsConstructor
-@Table(name = "employee", indexes = { @Index(name = "emp_id_index", columnList = "emp_id", unique = true),
-		@Index(name = "name_index", columnList = "name", unique = false) })
+@Table(name = "employee", uniqueConstraints = @UniqueConstraint(columnNames = { "emp_id", "firstName","lastName" }), indexes = {
+		@Index(name = "emp_id_index", columnList = "emp_id", unique = true),
+		@Index(name = "name_index", columnList = "firstName", unique = false) })
 public class Employee {
 
 	@Id
@@ -27,7 +29,9 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String name;
+	private String firstName;
+
+	private String lastName;
 
 	private int deptId;
 
@@ -38,33 +42,29 @@ public class Employee {
 	private LocalDateTime startDate;
 
 	private LocalDateTime endDate;
-	
+
 	public int getId() {
 		return id;
 	}
 
-	public LocalDateTime getStartDate() {
-		return startDate;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public void setStartDate(LocalDateTime startDate) {
-		this.startDate = startDate;
+	public String getFirstName() {
+		return firstName;
 	}
 
-	public LocalDateTime getEndDate() {
-		return endDate;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 
-	public void setEndDate(LocalDateTime endDate) {
-		this.endDate = endDate;
+	public String getLastName() {
+		return lastName;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
 	}
 
 	public int getDeptId() {
@@ -89,6 +89,22 @@ public class Employee {
 
 	public void setAge(short age) {
 		this.age = age;
+	}
+
+	public LocalDateTime getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDateTime startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDateTime getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDateTime endDate) {
+		this.endDate = endDate;
 	}
 
 }

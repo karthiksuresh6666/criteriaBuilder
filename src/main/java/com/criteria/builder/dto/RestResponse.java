@@ -2,7 +2,7 @@ package com.criteria.builder.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import javax.validation.constraints.NotNull;
+import com.sun.istack.NotNull;
 /**
  * @author Karthik Suresh
  *
