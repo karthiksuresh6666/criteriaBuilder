@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.criteria.builder.dto.Employee;
 import com.criteria.builder.dto.RestResponse;
+import com.criteria.builder.dto.SearchRequest;
 import com.criteria.builder.services.EmployeeService;
 
 /**
@@ -37,9 +38,9 @@ public class EmployeeController {
 	}
 
 	@PostMapping("find")
-	public ResponseEntity<RestResponse> findEmployee(@Valid @RequestBody final Employee employee) {
-		LOGGER.trace(">>updateOrder()");
-		var restResponse = this.employeeService.findEmployee(employee);
+	public ResponseEntity<RestResponse> findEmployees(@Valid @RequestBody final SearchRequest searchRequest) {
+		LOGGER.trace(">>findEmployee()");
+		var restResponse = this.employeeService.findEmployees(searchRequest);
 		return new ResponseEntity<>(restResponse, HttpStatus.OK);
 	}
 

@@ -8,14 +8,14 @@ import java.util.List;
  */
 public class SearchRequest {
 
-	List<EmployeeFilter> empFilterRequest;
+	List<EmployeeFilter> employeeFilters;
 
-	public List<EmployeeFilter> getEmpFilterRequest() {
-		return empFilterRequest;
+	public List<EmployeeFilter> getEmployeeFilters() {
+		return employeeFilters;
 	}
 
-	public void setEmpFilterRequest(List<EmployeeFilter> empFilterRequest) {
-		this.empFilterRequest = empFilterRequest;
+	public void setEmployeeFilters(List<EmployeeFilter> employeeFilters) {
+		this.employeeFilters = employeeFilters;
 	}
 
 }
