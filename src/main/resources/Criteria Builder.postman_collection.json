@@ -1,0 +1,69 @@
+{
+	"info": {
+		"_postman_id": "556890ae-2817-4520-afbb-379fcb55059d",
+		"name": "Criteria Builder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Find Employees",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"employeeFilters\": [\r\n        {\r\n            \"key\": \"firstName\",\r\n            \"operator\": \"equal\",\r\n            \"value\": \"Prasada\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/emp/find",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"emp",
+						"find"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Employee",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"firstName\": \"Prasad\",\r\n    \"lastName\": \"Upadhyaya\",\r\n    \"deptId\": 4,\r\n    \"salary\": 20000,\r\n    \"age\": 29,\r\n    \"startDate\": \"2018-05-01T16:07:16.126218700\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8081/v1/emp/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"v1",
+						"emp",
+						"create"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
