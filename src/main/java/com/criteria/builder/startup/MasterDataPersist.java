@@ -36,7 +36,7 @@ public class MasterDataPersist {
 	@Autowired
 	private EmployeeRepository employeeRepository;
 
-	public static final String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss.SSS";
+	public static final String DATE_FORMAT = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS";
 
 	private static final DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern(DATE_FORMAT);
 
@@ -71,8 +71,8 @@ public class MasterDataPersist {
 				emp2.setDeptId(1);
 				emp2.setSalary(20000);
 				emp2.setAge((short) 29);
-				emp2.setStartDate(getLocalDateTimeInUTC("2013-12-16 16:07:16.126"));
-				emp2.setEndDate(getLocalDateTimeInUTC("2021-05-09 16:07:16.126"));
+				emp2.setStartDate(getLocalDateTimeInUTC("2013-12-16T16:07:16.126218700"));
+				emp2.setEndDate(getLocalDateTimeInUTC("2021-05-09T16:07:16.126218700"));
 
 				var emp3 = new Employee();
 				emp3.setFirstName("Madhusudhan");
@@ -80,7 +80,7 @@ public class MasterDataPersist {
 				emp3.setDeptId(2);
 				emp3.setSalary(30000);
 				emp3.setAge((short) 29);
-				emp3.setStartDate(getLocalDateTimeInUTC("2014-03-01 16:07:16.126"));
+				emp3.setStartDate(getLocalDateTimeInUTC("2014-03-01T16:07:16.126218700"));
 
 				var emp4 = new Employee();
 				emp4.setFirstName("Prasada");
@@ -88,7 +88,7 @@ public class MasterDataPersist {
 				emp4.setDeptId(3);
 				emp4.setSalary(40000);
 				emp4.setAge((short) 29);
-				emp4.setStartDate(getLocalDateTimeInUTC("2013-12-24 16:07:16.126"));
+				emp4.setStartDate(getLocalDateTimeInUTC("2013-12-24T16:07:16.126218700"));
 
 				var emp5 = new Employee();
 				emp5.setFirstName("Prasad");
@@ -96,7 +96,7 @@ public class MasterDataPersist {
 				emp5.setDeptId(4);
 				emp5.setSalary(20000);
 				emp5.setAge((short) 29);
-				emp5.setStartDate(getLocalDateTimeInUTC("2018-05-01 16:07:16.126"));
+				emp5.setStartDate(getLocalDateTimeInUTC("2018-05-01T16:07:16.126218700"));
 
 				List<Employee> employees = Arrays.asList(emp1, emp2, emp3, emp4, emp5);
 				this.employeeRepository.saveAll(employees);
