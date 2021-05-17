@@ -27,6 +27,7 @@ import com.criteria.builder.dto.EmployeeFilter;
 import com.criteria.builder.dto.RestResponse;
 import com.criteria.builder.dto.SearchRequest;
 import com.criteria.builder.repository.EmployeeRepository;
+import com.criteria.builder.startup.MasterDataPersist;
 
 /**
  * @author Karthik Suresh
@@ -58,7 +59,7 @@ public class EmployeeService {
 		var criteriaBuilder = entityManager.getCriteriaBuilder();
 		List<Predicate> predicates = null;
 		Set<com.criteria.builder.entities.Employee> responseList = new HashSet<>();
-		int maxResultLimit = 10;
+		var maxResultLimit = 10;
 		if (CollectionUtils.isNotEmpty(searchRequest.getEmployeeFilters())) {
 			for (EmployeeFilter employeeFilter : searchRequest.getEmployeeFilters()) {
 				List<com.criteria.builder.entities.Employee> filteredList = null;
@@ -147,20 +148,21 @@ public class EmployeeService {
 		Predicate empFilterForString = null;
 		switch (employeeFilter.getOperator().toLowerCase()) {
 		case BuilderConstants.CONTAINS:
-			empFilterForString = criteriaBuilder.and(criteriaBuilder.like(
-					criteriaBuilder.lower(root.get(employeeFilter.getKey())), "%" + employeeFilter.getValue() + "%"));
+			empFilterForString = criteriaBuilder.and(
+					criteriaBuilder.like(root.get(employeeFilter.getKey()), "%" + employeeFilter.getValue() + "%"));
 			break;
 		case BuilderConstants.DO_NOT_CONTAIN:
-			empFilterForString = criteriaBuilder.and(criteriaBuilder.notLike(
-					criteriaBuilder.lower(root.get(employeeFilter.getKey())), "%" + employeeFilter.getValue() + "%"));
+			// criteriaBuilder.lower()
+			empFilterForString = criteriaBuilder.and(
+					criteriaBuilder.notLike(root.get(employeeFilter.getKey()), "%" + employeeFilter.getValue() + "%"));
 			break;
 		case BuilderConstants.EQUAL:
-			empFilterForString = criteriaBuilder.and(criteriaBuilder
-					.like(root.get(employeeFilter.getKey()), employeeFilter.getValue()));
+			empFilterForString = criteriaBuilder
+					.and(criteriaBuilder.like(root.get(employeeFilter.getKey()), employeeFilter.getValue()));
 			break;
 		case BuilderConstants.NOT_EQUAL:
-			empFilterForString = criteriaBuilder.and(criteriaBuilder
-					.notLike(root.get(employeeFilter.getKey()), employeeFilter.getValue()));
+			empFilterForString = criteriaBuilder
+					.and(criteriaBuilder.notLike(root.get(employeeFilter.getKey()), employeeFilter.getValue()));
 			break;
 		default:
 			LOGGER.error("invalid operator filter :{}", employeeFilter.getOperator());
@@ -183,12 +185,14 @@ public class EmployeeService {
 							Integer.valueOf(employeeFilter.getValue())));
 			break;
 		case BuilderConstants.EQUAL:
-			empFilterForNumber = criteriaBuilder.and(criteriaBuilder.like(
-					criteriaBuilder.lower(employeeEntityRoot.get(employeeFilter.getKey())), employeeFilter.getValue()));
+			empFilterForNumber = criteriaBuilder
+					.and(criteriaBuilder.equal(employeeEntityRoot.get(employeeFilter.getKey()).as(Integer.class),
+							Integer.valueOf(employeeFilter.getValue())));
 			break;
 		case BuilderConstants.NOT_EQUAL:
-			empFilterForNumber = criteriaBuilder.and(criteriaBuilder.notLike(
-					criteriaBuilder.lower(employeeEntityRoot.get(employeeFilter.getKey())), employeeFilter.getValue()));
+			empFilterForNumber = criteriaBuilder
+					.and(criteriaBuilder.notEqual(employeeEntityRoot.get(employeeFilter.getKey()).as(Integer.class),
+							Integer.valueOf(employeeFilter.getValue())));
 			break;
 		default:
 			LOGGER.error("invalid operator filter :{}", employeeFilter.getOperator());
@@ -201,12 +205,14 @@ public class EmployeeService {
 		Predicate empFilterForDate = null;
 		switch (employeeFilter.getOperator().toLowerCase()) {
 		case BuilderConstants.GREATER:
-			empFilterForDate = criteriaBuilder.and(criteriaBuilder
-					.greaterThanOrEqualTo(employeeEntityRoot.get(employeeFilter.getKey()), employeeFilter.getValue()));
+			empFilterForDate = criteriaBuilder
+					.and(criteriaBuilder.greaterThanOrEqualTo(employeeEntityRoot.get(employeeFilter.getKey()),
+							MasterDataPersist.getLocalDateTimeInUTC(employeeFilter.getValue())));
 			break;
 		case BuilderConstants.LESSER:
-			empFilterForDate = criteriaBuilder.and(criteriaBuilder
-					.lessThanOrEqualTo(employeeEntityRoot.get(employeeFilter.getKey()), employeeFilter.getValue()));
+			empFilterForDate = criteriaBuilder
+					.and(criteriaBuilder.lessThanOrEqualTo(employeeEntityRoot.get(employeeFilter.getKey()),
+							MasterDataPersist.getLocalDateTimeInUTC(employeeFilter.getValue())));
 			break;
 		default:
 			LOGGER.error("invalid operator filter : {}", employeeFilter.getOperator());
