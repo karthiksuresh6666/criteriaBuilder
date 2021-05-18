@@ -1,15 +1,17 @@
 package com.criteria.builder.dto;
 
+import javax.validation.constraints.NotNull;
+
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.sun.istack.NotNull;
+
 /**
  * @author Karthik Suresh
  *
  */
 @JsonInclude(Include.NON_NULL)
 public class RestResponse {
-	
+
 	public RestResponse() {
 	}
 
@@ -58,6 +60,3 @@ public class RestResponse {
 	}
 
 }
-
-
-
